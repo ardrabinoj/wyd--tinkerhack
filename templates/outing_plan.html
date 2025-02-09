@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outing Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Create an Outing Plan</h1>
+    <form method="POST">
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="text" name="food_preferences" placeholder="Food Preferences (e.g., street food, restaurant)">
+        <input type="text" name="budget" placeholder="Budget (e.g., low, medium, high)" required>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

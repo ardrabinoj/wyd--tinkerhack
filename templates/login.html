@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-icon {
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .post-box textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            resize: none;
+        }
+        button {
+            background-color: white;
+            border: 2px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        button:active {
+            transform: scale(0.9);
+        }
+        .category-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .category-dropdown button {
+            margin-top: 20px;
+        }
+        #dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        #dropdown-menu a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: black;
+        }
+        #dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+        .password-container {
+            position: relative;
+            display: inline-block;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome Home</h1>
+        <div class="profile-icon" onclick="toggleProfileMenu()">👤</div>
+        <div id="profile-menu" class="hidden">View Profile</div>
+    </header>
+    
+    <main>
+        <div class="post-box">
+            <textarea placeholder="Share your thoughts..."></textarea>
+            <button onclick="postMessage()">Send</button>
+        </div>
+        
+        <div class="category-dropdown">
+            <button onclick="toggleDropdown()">Category</button>
+            <div id="dropdown-menu" class="hidden">
+                <a href="/category/events">EVENTS</a>
+                <a href="/category/daily">DAILY</a>
+                <a href="/category/random">RANDOM</a>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdown-menu").classList.toggle("hidden");
+        }
+        function toggleProfileMenu() {
+            document.getElementById("profile-menu").classList.toggle("hidden");
+        }
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>
+
+

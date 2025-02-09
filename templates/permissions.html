@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permissions</title>
+    <script>
+        function requestPermissions() {
+            // Request Microphone Access
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(() => console.log("Microphone access granted"))
+                .catch(() => alert("Microphone access denied"));
+
+            // Request Camera Access
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(() => console.log("Camera access granted"))
+                .catch(() => alert("Camera access denied"));
+
+            // Request Location Access
+            navigator.geolocation.getCurrentPosition(
+                (position) => console.log("Location access granted:", position),
+                () => alert("Location access denied")
+            );
+        }
+    </script>
+</head>
+<body>
+    <h1>Grant Permissions</h1>
+    <button onclick="requestPermissions()">Allow Access</button>
+</body>
+</html>
